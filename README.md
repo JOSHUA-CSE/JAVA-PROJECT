@@ -25,3 +25,5 @@
   ->To provide features for teachers and students to easily access their timetables.
   
   ->To ensure conflict-free scheduling (a teacher cannot be assigned to two sections at the same time).
+# UML DIAGRAM
+![screenshot](https://github.com/user-attachments/assets/865bb8d4-03a6-49f5-9d1e-4431f18d9e40)
