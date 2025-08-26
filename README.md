@@ -16,14 +16,14 @@
   ->Conflict detection (prevents a teacher from being scheduled in two classes at the same time).
   
   ->Easy to extend with new sections or teachers.
-# Objectives
+# OOP Concepts Used
 
-  ->To design a simple timetable manager using UML diagrams and implement it in Java.
+  ->Encapsulation: Attributes of classes are private with getters/setters.
   
-  ->To apply OOP concepts in a practical project.
+  ->Inheritance: Sections inherit common schedule features.
   
-  ->To provide features for teachers and students to easily access their timetables.
+  ->Polymorphism: Different sections/teachers can display timetables in their own way.
   
-  ->To ensure conflict-free scheduling (a teacher cannot be assigned to two sections at the same time).
+  ->Association: ClassSchedule is associated with both Teacher and Section.
 # UML DIAGRAM
 ![screenshot](https://github.com/user-attachments/assets/865bb8d4-03a6-49f5-9d1e-4431f18d9e40)
