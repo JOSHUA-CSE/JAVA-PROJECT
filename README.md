@@ -17,8 +17,6 @@
   
   ->Easy to extend with new sections or teachers.
 # OOP Concepts Used
-
-  ->Encapsulation: Attributes of classes are private with getters/setters.
   
   ->Inheritance: Sections inherit common schedule features.
   
