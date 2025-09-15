@@ -27,14 +27,14 @@ class Teacher{
         this.teacher = teacher;
     }
 }
-public class SectionA extends schedule{
-    ArrayList<Schedule> timetable = new ArrayList<>();
+class SectionA extends schedule{
+    ArrayList<schedule> timetable = new ArrayList<>();
     SectionA()
     {
         super("","","",null);
     }
-    void addToTimetable(schedule t){
-        timetable.add(t);
+    void addToTimetable(schedule s){
+        timetable.add(s);
     }
     void getSectionDetails(){
         System.out.println("Section A Details");
@@ -42,13 +42,13 @@ public class SectionA extends schedule{
             System.out.println("Subject: "+s.subject+", Time: "+s.time+", Day: "+s.day+", Teacher: "+s.teacher.name);
         }
     }
-}public class SectionB extends schedule{
-    ArrayList<Schedule> time_table = new ArrayList<>();
+}class SectionB extends schedule{
+    ArrayList<schedule> time_table = new ArrayList<>();
     SectionB()
     {
         super("","","",null);
-    }void addToTimetable(schedule t){
-        time_table.add(t);
+    }void addToTimetable(schedule s){
+        time_table.add(s);
     }void getSectionDetails(){
         System.out.println("Section B Details");
         for(schedule s : time_table){
@@ -62,8 +62,7 @@ public class Timetable {
         Scanner sc = new Scanner(System.in);
         int choice=0;
         ArrayList<Teacher> teachers = new ArrayList<>();
-        ArrayList<schedule> schedules = new ArrayList<>();
-        while(choice!=4){
+        while(choice!=6){
             System.out.println("1. Add Teacher\n2. Add Schedule\n3.View Teachers\n4. View Timetable\n5. View Teachers Timetable\n6. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
@@ -100,42 +99,35 @@ public class Timetable {
                     System.out.print("Enter Section (A/B): ");
                     String sectionType = sc.next();
                     if(sectionType.equalsIgnoreCase("A")){
-                        System.out.print("Enter Section Name: ");
-                        String sname = sc.next();
-                        System.out.print("Enter Section ID: ");
-                        String sid = sc.next();
-                        section = new SectionA(sname, sid);
+                        SectionA section=new SectionA();
+                        section.addToTimetable(new schedule(subject, time, day, t));
                     }else if(sectionType.equalsIgnoreCase("B")){
-                        System.out.print("Enter Section Name: ");
-                        String sname = sc.next();
-                        System.out.print("Enter Section ID: ");
-                        String sid = sc.next();
-                        section = new SectionB(sname, sid);
+                        SectionB section=new SectionB();
+                        section.addToTimetable(new schedule(subject, time, day, t));
                     }else{
                         System.out.println("Invalid Section Type!");
                         break;
                     }
-                    schedules.add(new schedule(subject, time, day, t, section));
                     break;
                 case 3:
-                    for(Teacher t : teachers){
-                        t.displayTeacherDetails();
+                    for(Teacher teacher : teachers){
+                        teacher.displayTeacherDetails();
                         System.out.println();
                     }
                     break;
                 case 4:
-                    for(Teacher t : teachers){
-                        t.getTimetable();
+                    for(Teacher teacher : teachers){
+                        teacher.getTimetable();
                         System.out.println();
                     }
                     break;
                 case 5:
                     System.out.print("Enter Teacher ID to view Timetable: ");
-                    int tid = sc.nextInt();
+                    int t_id = sc.nextInt();
                     boolean found = false;
-                    for(Teacher t : teachers){
-                        if(t.teacher_id == tid){
-                            t.getTimetable();
+                    for(Teacher teacher : teachers){
+                        if(teacher.teacher_id == t_id){
+                            teacher.getTimetable();
                             found = true;
                             break;
                         }
