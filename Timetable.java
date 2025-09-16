@@ -77,7 +77,9 @@ public class Timetable {
                     int id = sc.nextInt();
                     System.out.print("Enter Deapartment: ");
                     String deapartment = sc.next();
-                    teachers.add(new Teacher(name, id, deapartment));
+                    System.out.print("Enter Phone No: ");
+                    String phone_no = sc.next();
+                    teachers.add(new Teacher(name, id, deapartment,phone_no));
                     break;
                 case 2:
                     System.out.print("Enter Subject: ");
