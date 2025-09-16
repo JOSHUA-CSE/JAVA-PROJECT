@@ -63,7 +63,7 @@ public class Timetable {
         int choice=0;
         ArrayList<Teacher> teachers = new ArrayList<>();
         while(choice!=6){
-            System.out.println("1. Add Teacher\n2. Add Schedule\n3.View Teachers\n4. View Timetable\n5. View Teachers Timetable\n6. Exit");
+            System.out.println("1. Add Teacher\n2. Add Schedule\n3.View Teachers\n4. View section Timetable\n5. View Teachers Timetable\n6. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
             switch(choice){
@@ -116,11 +116,17 @@ public class Timetable {
                     }
                     break;
                 case 4:
-                    for(Teacher teacher : teachers){
-                        teacher.getTimetable();
-                        System.out.println();
+                    System.out.print("Enter Section (A/B) to view Timetable: ");
+                    String secType = sc.next();
+                    if(secType.equalsIgnoreCase("A")){
+                        SectionA section=new SectionA();
+                        section.getSectionDetails();
+                    }else if(secType.equalsIgnoreCase("B")){
+                        SectionB section=new SectionB();
+                        section.getSectionDetails();
+                    }else{
+                        System.out.println("Invalid Section Type!");
                     }
-                    break;
                 case 5:
                     System.out.print("Enter Teacher ID to view Timetable: ");
                     int t_id = sc.nextInt();
