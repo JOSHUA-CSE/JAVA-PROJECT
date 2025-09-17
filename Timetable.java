@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 class Teacher{
     String name;
@@ -61,6 +60,21 @@ class SectionA extends schedule{
 }
 
 public class Timetable {   
+    boolean isConflict(Teacher t, String time, String day, SectionA sectionA, SectionB sectionB)
+    {
+        for (schedule s : sectionA.timetable) {
+            if (s.teacher.teacher_id == t.teacher_id && s.time.equals(time) && s.day.equals(day)) {
+                return true;
+            }
+        }
+        for (schedule s : sectionB.time_table) {
+            if (s.teacher.teacher_id == t.teacher_id && s.time.equals(time) && s.day.equals(day)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice=0;
@@ -104,11 +118,21 @@ public class Timetable {
                     System.out.print("Enter Section (A/B): ");
                     String sectionType = sc.next();
                     if(sectionType.equalsIgnoreCase("A")){
-                        SectionA section=new SectionA();
-                        section.addToTimetable(new schedule(subject, time, day, t));
+                        SectionA section_A=new SectionA();
+                        if(new Timetable().isConflict(t, time, day, section_A, new SectionB())){
+                            System.out.println("Schedule conflict for the teacher at the given time and day.");
+                        }else
+                        {
+                            section_A.addToTimetable(new schedule(subject, time, day, t));
+                        }
                     }else if(sectionType.equalsIgnoreCase("B")){
-                        SectionB section=new SectionB();
-                        section.addToTimetable(new schedule(subject, time, day, t));
+                        SectionB section_B=new SectionB();
+                        if(new Timetable().isConflict(t, time, day, new SectionA(), section_B)){
+                            System.out.println("Schedule conflict for the teacher at the given time and day.");
+                        }else
+                        {
+                            section_B.addToTimetable(new schedule(subject, time, day, t));
+                        }
                     }else{
                         System.out.println("Invalid Section Type!");
                         break;
@@ -142,7 +166,7 @@ public class Timetable {
                             found = true;
                             break;
                         }
-                    }
+                    }break;
                 case 6:
                     System.out.println("Exiting...");
                     break;
