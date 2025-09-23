@@ -1,23 +1,6 @@
 import java.util.*;
-class Teacher{
-    String name;
-    int teacher_id;
-    String deapartment;
-    String phone_no;
-    Teacher(String name, int id,String Deapartment, String phone_no){
-        this.name = name;
-        this.teacher_id = id;
-        this.deapartment = Deapartment;
-        this.phone_no = phone_no;
-    }void displayTeacherDetails(){
-        System.out.println("Name: "+name);
-        System.out.println("ID: "+teacher_id);
-        System.out.println("Deapartment: "+deapartment);
-        System.out.println("Phone No: "+phone_no);
-    }void getTimetable(){
-        System.out.println("Timetable of "+name);
-    }
-}class schedule{
+import JAVA-PROJECT.*;
+class schedule{
     String subject;
     String time;
     String day;
@@ -28,6 +11,23 @@ class Teacher{
         this.day = day;
         this.teacher = teacher;
     }
+}class Section
+{
+    String s_name;
+    Map<String,Section> sections=new HashMap<>();
+    List<schedule> schedules=new ArrayList<>();
+    String Section(String name)
+    {
+        s_name=name;
+    }void addnewSection(String name)
+    {
+        sections.put(name,this);
+    }
+    void addtimetable(schedule s)
+    {
+        schedules.add(s);
+    }
+    
 }
 class SectionA extends schedule{
     ArrayList<schedule> timetable = new ArrayList<>();
@@ -145,7 +145,7 @@ public class Timetable {
                     }
                     break;
                 case 4:
-                    System.out.print("Enter Section (A/B) to view Timetable: ");
+                    System.out.print("Enter Section: ");
                     String secType = sc.next();
                     if(secType.equalsIgnoreCase("A")){
                         SectionA section=new SectionA();
