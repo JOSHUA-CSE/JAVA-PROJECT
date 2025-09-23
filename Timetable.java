@@ -11,70 +11,8 @@ class schedule{
         this.day = day;
         this.teacher = teacher;
     }
-}class Section
-{
-    String s_name;
-    Map<String,Section> sections=new HashMap<>();
-    List<schedule> schedules=new ArrayList<>();
-    String Section(String name)
-    {
-        s_name=name;
-    }void addnewSection(String name)
-    {
-        sections.put(name,this);
-    }
-    void addtimetable(schedule s)
-    {
-        schedules.add(s);
-    }
-    
 }
-class SectionA extends schedule{
-    ArrayList<schedule> timetable = new ArrayList<>();
-    SectionA()
-    {
-        super("","","",null);
-    }
-    void addToTimetable(schedule s){
-        timetable.add(s);
-    }
-    void getSectionDetails(){
-        System.out.println("Section A Details");
-        for(schedule s : timetable){
-            System.out.println("Subject: "+s.subject+", Time: "+s.time+", Day: "+s.day+", Teacher: "+s.teacher.name);
-        }
-    }
-}class SectionB extends schedule{
-    ArrayList<schedule> time_table = new ArrayList<>();
-    SectionB()
-    {
-        super("","","",null);
-    }void addToTimetable(schedule s){
-        time_table.add(s);
-    }void getSectionDetails(){
-        System.out.println("Section B Details");
-        for(schedule s : time_table){
-            System.out.println("Subject: "+s.subject+", Time: "+s.time+", Day: "+s.day+", Teacher: "+s.teacher.name);
-        }
-    }
-}
-
 public class Timetable {   
-    boolean isConflict(Teacher t, String time, String day, SectionA sectionA, SectionB sectionB)
-    {
-        for (schedule s : sectionA.timetable) {
-            if (s.teacher.teacher_id == t.teacher_id && s.time.equals(time) && s.day.equals(day)) {
-                return true;
-            }
-        }
-        for (schedule s : sectionB.time_table) {
-            if (s.teacher.teacher_id == t.teacher_id && s.time.equals(time) && s.day.equals(day)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice=0;

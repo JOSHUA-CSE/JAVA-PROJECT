@@ -1,4 +1,5 @@
-package first;
+package second;
+
 class Teacher{
     String name;
     int teacher_id;
@@ -10,10 +11,10 @@ class Teacher{
         this.deapartment = Deapartment;
         this.phone_no = phone_no;
     }void displayTeacherDetails(){
-        System.out.println("Name: "+name);
-        System.out.println("ID: "+teacher_id);
-        System.out.println("Deapartment: "+deapartment);
-        System.out.println("Phone No: "+phone_no);
+        System.out.println("Name:"+name);
+        System.out.println("ID:"+teacher_id);
+        System.out.println("Deapartment:"+deapartment);
+        System.out.println("Phone No:"+phone_no);
     }void getTimetable(){
         System.out.println("Timetable of "+name);
     }
