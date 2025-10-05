@@ -1,4 +1,5 @@
 import java.util.*;
+import java.sql.*;
 import JAVA-PROJECT.*;
 class schedule{
     String subject;
@@ -14,6 +15,10 @@ class schedule{
 }
 public class Timetable {   
     public static void main(String[] args) {
+        String url="jdbc:mysql://localhost:3306/timetable";
+        String user="root";
+        String pass="Jones@123";
+        Connection con=DriverManager.getConnection(url,user,pass);
         Scanner sc = new Scanner(System.in);
         int choice=0;
         ArrayList<Teacher> teachers = new ArrayList<>();
