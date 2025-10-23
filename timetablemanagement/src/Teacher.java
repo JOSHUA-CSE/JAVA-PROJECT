@@ -2,12 +2,12 @@ package timetablemanagement.src;
 
 import java.sql.*;
 
-class Teacher{
+class teacher{
     String name;
     int teacher_id;
     String deapartment;
     String phone_no;
-    Teacher(String name, int id,String Deapartment, String phone_no){
+    teacher(String name, int id,String Deapartment, String phone_no){
         this.name = name;
         this.teacher_id = id;
         this.deapartment = Deapartment;
@@ -30,12 +30,16 @@ class Teacher{
                 return;
             }
             Statement stm=con.createStatement();
-            String query="Insert into Teacher values(name,teacher_id,deapartment,phone_no)";
+            String query=String.format(
+                "INSERT INTO Teacher(teacher_id, name, department, phone_no) VALUES (%d, '%s', '%s', '%s')",
+                teacher_id, name, deapartment, phone_no);
             stm.executeUpdate(query);
         }
         catch(SQLException e)
         {
             System.err.println("Insertion Failed");
-        } 
+            e.printStackTrace();
+        }
+
     }
 }
